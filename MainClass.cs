@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using ClassLibrary1;
 
 namespace ConsoleApp1 
 {
@@ -76,8 +77,41 @@ namespace ConsoleApp1
             Console.WriteLine(obj.Msg);
         }
 
+
+        public abstract class Car
+        {
+            public abstract void Drive();
+        }
+
+        class ManualCar : Car
+        {
+            public override void Drive()
+            {
+                Console.WriteLine("Driving car manually.");
+            }
+        }
+
+        class AutoCar : Car
+        {
+            public override void Drive()
+            {
+                Console.WriteLine("Driving car auto.");
+            }
+        }
+
+
+        public static void DriveCar<T>(T obj) where T : Car
+        {
+            obj?.Drive();
+        }
+
         static void Main(string[] args)
         {
+            //DriveCar<AutoCar>(new AutoCar());
+            
+
+            //Class1.Class1Method();
+
             // ==================== Normal coding ====================
             //Console.Write("Hello, User! Please enter total number of entries you will enter[max allowed 100]: ");
 
@@ -210,7 +244,8 @@ namespace ConsoleApp1
 
             // ==================== Generic Collections ====================
             //GenericCollections.ListDemo();
-
+            GenericCollections.SortedListDemo();
+            Console.ReadKey();
         }
     }
 }
